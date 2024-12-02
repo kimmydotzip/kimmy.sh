@@ -10,7 +10,8 @@
 # Find me on BlueSky (@kimmy.zip) or the stupid platform (@kimmydotzip)
 # Have a nice day!
 
-# $PS1 isn't accessible in a subshell, so we're doing a Neat Trick™
+# $PS1 isn't accessible in a subshell, so we're doing a Neat Trick™ so we can
+# fake out the prompt
 PROMPT=$(bash --login -i -c 'echo "${PS1@P}"' 2>/dev/null)
 
 # scary stuff! don't accidentally a word here
