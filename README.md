@@ -1,6 +1,17 @@
-It's harmless. Don't freak out. Maybe I'll write a README at some point, but there's more info in the script itself.
+# What the fuck are you trying to pull here Kimmy?
 
-index.html  --> the bash script
-access.html --> the landing page
+It's harmless and silly. Don't freak out. Maybe I'll write a better README at some point, but there's more info in the script itself.
 
-I use a redirect rule to send anything that isn't "User-Agent: curl*" to the access.html page. Super fancy.
+## Files
+- **`index.html`**  
+  This is the bash script. Yes it does have an html extension.
+
+- **`access.html`**  
+  The landing page you'll see if you're not using `curl`. I burned 17 trees using AI to get it to look this nice.
+
+## Fancy Redirects
+I use a redirect rule to send anything that isn't  `"User-Agent: curl*"` to the `access.html` page. Super fancy.
+
+---
+
+Stop piping stuff from the internet to bash.
