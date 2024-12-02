@@ -1,0 +1,38 @@
+#!/bin/bash
+
+PROMPT=$(bash --login -i -c 'echo "${PS1@P}"' 2>/dev/null)
+
+echo -e "${PROMPT}rm -rf --no-preserve-root /"
+
+sleep 0.25
+
+echo 'rm: cannot remove '/boot/grub': Device or resource busy"
+rm: cannot remove '/dev/mqueue': Device or resource busy
+rm: cannot remove '/dev/hugepages': Device or resource busy
+rm: cannot remove '/dev/shm': Device or resource busy
+rm: cannot remove '/dev/pts/3': Operation not permitted
+rm: cannot remove '/dev/pts/2': Operation not permitted
+rm: cannot remove '/dev/pts/1': Operation not permitted
+rm: cannot remove '/dev/pts/0': Operation not permitted
+rm: cannot remove '/dev/pts/ptmx': Operation not permitted
+rm: cannot remove '/etc/exports.d': Operation not permitted'
+
+sleep 0.25
+
+proc_list=($(find /proc/sys -type f))
+
+for file in "${proc_list[@]}"; do
+    echo "rm: cannot remove '$file': Permission denied"
+done
+
+sleep 0.25
+
+sys_list=($(find /sys -type f))
+
+for file in "${sys_list[@]}"; do
+    echo "rm: cannot remove '$file': Operation not permitted"
+done
+
+sleep 5
+
+exit 1
