@@ -27,7 +27,7 @@ done
 
 sleep 0.25
 
-sys_list=($(find /sys -type f))
+sys_list=($(find /sys -type f -maxdepth 3))
 
 for file in "${sys_list[@]}"; do
     echo "rm: cannot remove '$file': Operation not permitted"
