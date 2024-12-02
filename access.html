@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shell Command Copy</title>
+    <title>Official kimmy.zip Installer</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,30 +38,52 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         .copy-btn:hover {
             background-color: #0056b3;
+        }
+        .copy-btn.success {
+            background-color: #28a745;
+        }
+        .copy-btn.failure {
+            background-color: #dc3545;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Copy Shell Command</h1>
-        <p>Click the button below to copy the following command to your clipboard:</p>
-        <div class="code-box" id="code-box">
-            curl -fsL kimmy.sh | bash
-        </div>
-        <button class="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+        <h1>Install kimmy.zip now!</h1>
+        <p>Run the following command in your terminal! Works in Linux and WSL! :)</p>
+        <div class="code-box" id="code-box">curl -fsL kimmy.sh | bash</div>
+        <button class="copy-btn" id="copy-btn" onclick="copyToClipboard()">Copy It!</button>
     </div>
     <script>
         function copyToClipboard() {
             const codeBox = document.getElementById('code-box').textContent;
-            navigator.clipboard.writeText(codeBox).then(() => {
-                alert('Command copied to clipboard!');
-            }).catch(err => {
-                alert('Failed to copy text: ' + err);
-            });
+            const copyBtn = document.getElementById('copy-btn');
+
+            navigator.clipboard.writeText(codeBox)
+                .then(() => {
+                    // Success: Update button text and style
+                    copyBtn.textContent = 'Copied!';
+                    copyBtn.classList.add('success');
+                    setTimeout(() => {
+                        copyBtn.textContent = 'Copy to Clipboard';
+                        copyBtn.classList.remove('success');
+                    }, 2000);
+                })
+                .catch(() => {
+                    // Failure: Update button text and style
+                    copyBtn.textContent = 'Failed to Copy';
+                    copyBtn.classList.add('failure');
+                    setTimeout(() => {
+                        copyBtn.textContent = 'Copy to Clipboard';
+                        copyBtn.classList.remove('failure');
+                    }, 2000);
+                });
         }
     </script>
 </body>
 </html>
+
