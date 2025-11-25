@@ -9,7 +9,7 @@ async function handleRequest(request) {
     // Simply forward the request to the Cloudflare Pages backend
     return fetch(request);
   } else {
-    // Redirect browsers to https://kimmy.zip
-    return Response.redirect("https://kimmy.zip", 302);
+    // Redirect browsers to https://kimmy.sh/access
+    return Response.redirect("https://kimmy.sh/access", 302);
   }
 }
