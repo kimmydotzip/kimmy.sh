@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official kimmy.zip Installer!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .code-box {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            margin: 20px 0;
+            font-size: 16px;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+        .copy-btn.success {
+            background-color: #28a745;
+        }
+        .copy-btn.failure {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Install kimmy.zip now!</h1>
+        <p>Run the following command in your terminal!</p>
+        <p>Works in any Linux distro (and PowerShell if you have WSL installed!) 😊</p>
+        <div class="code-box" id="code-box">curl -fsL kimmy.sh | bash</div>
+        <button class="copy-btn" id="copy-btn" onclick="copyToClipboard()">Copy It!</button>
+    </div>
+    <script>
+        function copyToClipboard() {
+            const codeBox = document.getElementById('code-box').textContent;
+            const copyBtn = document.getElementById('copy-btn');
+
+            navigator.clipboard.writeText(codeBox)
+                .then(() => {
+                    // Success: Update button text and style
+                    copyBtn.textContent = 'Copied!';
+                    copyBtn.classList.add('success');
+                    setTimeout(() => {
+                        copyBtn.textContent = 'Copy to Clipboard';
+                        copyBtn.classList.remove('success');
+                    }, 2000);
+                })
+                .catch(() => {
+                    // Failure: Update button text and style
+                    copyBtn.textContent = 'Failed to Copy';
+                    copyBtn.classList.add('failure');
+                    setTimeout(() => {
+                        copyBtn.textContent = 'Copy to Clipboard';
+                        copyBtn.classList.remove('failure');
+                    }, 2000);
+                });
+        }
+    </script>
+</body>
+</html>
+
