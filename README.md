@@ -2,6 +2,9 @@
 
 It's harmless and silly. Don't freak out. Maybe I'll write a better README at some point, but there's more info in the script itself.
 
+## Link
+https://kimmy.sh
+
 ## Files
 - **`index.html`**  
   This is the bash script. Yes it does have an html extension.
