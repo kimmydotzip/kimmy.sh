@@ -10,7 +10,7 @@ It's harmless and silly. Don't freak out. Maybe I'll write a better README at so
   The landing page you'll see if you're not using `curl`. I burned 17 trees using AI to get it to look this nice.
 
 ## Fancy Redirects
-I use a redirect rule to send anything that isn't  `"User-Agent: curl*"` to the `access.html` page. Super fancy.
+I use a redirect rule in CloudFlare to send anything that isn't  `"User-Agent: curl*"` to the `access.html` page. Super fancy.
 
 ---
 
