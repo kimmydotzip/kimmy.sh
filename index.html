@@ -11,9 +11,13 @@
 # Find me on BlueSky (@kimmy.zip) or the stupid platform (@kimmydotzip)
 # Have a nice day!
 
+no_error=false
+[[ "$1" == "-x" ]] && { no_error=true; shift; }
+
 # $PS1 isn't accessible in a subshell, so we're doing a Neat Trick™ so we can
 # fake out the prompt
-PROMPT=$(bash --login -i -c 'echo "${PS1@P}"' 2>/dev/null)
+PROMPT=$(bash --login -i -c 'echo "${PS1@P}"' 2>/dev/null | sed 's/\\\[//g; s/\\\]//g')
+[[ -z "$PROMPT" ]] && PROMPT="$ "
 
 # scary stuff! don't accidentally a word here
 echo -e "${PROMPT}rm -rf --no-preserve-root /"
@@ -56,5 +60,9 @@ done
 # if you haven't ctrl^c by now... I guess you get to see it end. ¯\(°_o)/¯
 sleep 5
 
-# letting this run is a fail
-exit 1
+# letting this run is a fail, but sometimes I need it to not error, for _reasons_
+if [[ "$no_error" == true ]]; then
+  exit 0
+else
+  exit 1
+fi
